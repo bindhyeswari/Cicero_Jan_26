@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', showModal);
+
+            function showModal() {
+                document.getElementById('modal').style.display = 'block';
+            }
+
+            var modal = document.querySelector('div#modal');
+            modal.addEventListener('click', function (event) {
+                // close the modal if the user clicks anywhere except the div.message
+                if (event.target.className !== 'message') {
+                    document.getElementById('modal').style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="base.css"/>
+    <style>
+        html, body, * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div#modal {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: none;
+        }
+        
+        button {
+            display: block;
+            margin: 25vh auto;
+        }
+
+        div#modal > div.message {
+            background-color: black;
+            color: white;
+            margin: 10% auto;
+            width: 60%;
+            padding: 1em;
+            font-size: 2em;
+            box-shadow: 0 0 15px 5px #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="modal">
+        <div class="message">
+            Please perform relevant action before going to the next step!
+        </div>
+    </div>
+    <button>Click!</button>
+</body>
+</html>
