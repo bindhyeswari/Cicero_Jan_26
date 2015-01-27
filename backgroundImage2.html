@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div.container {
+            height: 50vh;
+            width: 50vw;
+            margin: 25vh auto;
+
+            overflow: hidden;
+        }
+        ul.slider > li {
+            height: 50vh;
+            width: 50vw;
+
+            display: inline-block;
+
+            background-image: url('thailand.jpg');
+            background-size: cover;
+            background-color: green;
+        }
+
+        ul.slider > li:nth-child(2n) {
+            background-image: none;
+            background-color: red;
+        }
+
+        ul.slider {
+            width: 250vw;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var div = document.querySelector('.container');
+            var li = div.firstElementChild.firstElementChild;
+            var currentSlide = 0;
+            div.addEventListener('click', function () {
+                currentSlide++;
+                var finalScrollPosition = currentSlide * li.clientWidth;
+                var currScrollPosition = div.scrollLeft;
+
+                var intervalid = setInterval(function () {
+                    currScrollPosition++;
+                    if (currScrollPosition >= finalScrollPosition) {
+                        clearInterval(intervalid);
+                    }
+                    div.scrollLeft = currScrollPosition;
+                }, 1)
+            })
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <ul class="slider">
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+</div>
+</body>
+</html>
